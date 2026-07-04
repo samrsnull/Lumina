@@ -1,0 +1,143 @@
+/* 1. HERO PRINCIPAL: Fondo angosto y efecto scroll */
+.hero {
+  /* Truco para salir de los márgenes y ocupar toda la pantalla */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  /* Altura reducida (Más angosto) */
+  min-height: 450px; /* Antes tenías 600px o más */
+  /*padding: 2rem 0;   /* Poco relleno arriba y abajo */
+  
+  /* Alineación */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* FONDO + PARALLAX (El fondo se queda quieto al bajar) */
+  background: linear-gradient(135deg, #fff8e7, #ffd966);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  
+  border-bottom: 1px solid #e6c97d;
+  overflow: hidden; 
+}
+
+/* 2. CONTENEDOR INTERNO: Centra el contenido */
+.heroContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px; /* Un poco más compacto */
+  margin: 0 auto;
+  padding: 0 2rem;
+  z-index: 10;
+}
+
+/* 3. TEXTOS */
+.heroText {
+  flex: 1;
+  max-width: 550px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #a67c00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 4px 12px;
+  border-radius: 15px;
+}
+
+.title {
+  font-size: 3rem; /* Letra grande pero no gigante */
+  font-weight: 900;
+  line-height: 1.1;
+  color: #5c3a21;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #6e5033;
+  margin-bottom: 2rem;
+  max-width: 90%;
+}
+
+/* 4. BOTÓN */
+.btnPrimary {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(45deg, #333, #000); 
+  color: #ffd700;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(45deg, #000, #333);
+}
+
+/* 5. IMAGEN: Limpieza total de bordes y fondos */
+.heroImg {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent !important; 
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.heroImg img {
+  width: 100%;
+  max-width: 450px; /* Control de tamaño */
+  height: auto;
+
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important; 
+  
+  /* Sombra solo en la silueta (Drop Shadow) */
+  filter: drop-shadow(0 15px 25px rgba(166, 124, 0, 0.3));
+
+}
+
+/* RESPONSIVE (Móvil) */
+@media (max-width: 968px) {
+  .hero {
+    min-height: auto;
+    padding: 3rem 0;
+    /* En iPhone/Android el 'fixed' a veces falla, mejor 'scroll' */
+    background-attachment: scroll; 
+  }
+
+  .heroContainer {
+    flex-direction: column-reverse; /* Imagen arriba, texto abajo en móvil? O al revés */
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+}

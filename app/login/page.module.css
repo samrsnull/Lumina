@@ -1,0 +1,197 @@
+/* ...existing code... */
+
+/* Contenedor principal de la página de login.
+   Define altura mínima, color de fondo y uso de flex para apilar contenido. */
+.loginPage {
+  min-height: 100vh;
+  --background: #eeeeee;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper central que contiene las dos columnas (marca + formulario).
+   Limita ancho, centra en la página, usa grid para columnas y añade tarjeta blanca. */
+.loginWrapper {
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  display: grid;
+  grid-template-columns: 1fr 420px; /* columna grande para branding + columna fija para formulario */
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  border-radius: 8px;
+}
+
+/* Columna izquierda: contenedor de marca (logo, tagline, icono). */
+.brandCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brandInner {
+  text-align: center; /* alinear el contenido de la marca a la izquierda dentro de la columna */
+}
+.logo {
+  display: block;
+  object-fit: contain; /* asegura que la imagen mantenga proporciones */
+}
+.tagline {
+  margin: 0.6rem 0 1.2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Recuadro que rodea el icono/diamante para darle fondo y separación. */
+.diamond {
+  /*background: #fbf3e6;*/
+  padding: 1rem;
+  width: 180px;
+  border-radius: 8px;
+  margin: 1rem auto 0;
+}
+
+/* Columna derecha: contiene el formulario. */
+.formCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  width: 100%;
+  padding: 1.6rem; /* espacio interior de la tarjeta del formulario */
+}
+.cardHeader h1 {
+  margin: 0 0 6px;
+  font-size: 1.4rem; /* título principal del formulario */
+}
+.cardSubtitle {
+  margin: 0 0 1rem;
+  color: #666;
+  font-size: 0.95rem; /* subtítulo de ayuda bajo el título */
+}
+
+/* Formulario: disposición vertical con separación entre campos. */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.label {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+/* Estilo base para los inputs (correo y contraseña). */
+.input {
+  padding: 0.85rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #e6dccc;
+  background: #f0d58c;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Fila que contiene el input de contraseña + botón para mostrar/ocultar.
+   Se usa flex para que el input ocupe el espacio restante y el botón mantenga su tamaño. */
+.passwordRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Asegura que el input dentro de .passwordRow ocupe todo el espacio disponible
+   y no genere overflow dentro del contenedor flex. */
+.passwordRow .input {
+  flex: 1 1 auto;
+  min-width: 0; /* evita overflow en contenedores flex */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Botón toggle: no crece, centrado, sirve para icono/emoji de mostrar contraseña. */
+.passwordRow .toggleBtn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* opcional: se puede definir ancho/alto aquí para consistencia visual */
+}
+
+/* Fila con checkbox "recuérdame" y enlace "olvidaste contraseña". */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+.checkbox {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.forgot {
+  font-size: 0.85rem;
+  color: #888;
+  text-decoration: none;
+}
+
+/* Botón principal de enviar (Entrar). */
+.primaryBtn {
+  margin-top: 0.5rem;
+  padding: 0.9rem;
+  border-radius: 8px;
+  background: #f0d58c;
+  border: 1px solid #e2cfa0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Separador de opciones sociales: texto "o continuar con". */
+.or {
+  text-align: center;
+  color: #999;
+  margin: 0.85rem 0 0.4rem;
+  font-size: 0.85rem;
+}
+
+/* Contenedor de botones sociales (Facebook, Apple, Google). */
+.socials {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+}
+.socialBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #e6e6e6;
+  background: white;
+  cursor: pointer;
+}
+
+/* Texto inferior con enlace para registrarse. */
+.register {
+  text-align: center;
+  color: #666;
+  margin-top: 0.4rem;
+}
+.link {
+  color: #222;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Responsive: en pantallas pequeñas apila las columnas en una sola columna. */
+@media (max-width: 900px) {
+  .loginWrapper {
+    grid-template-columns: 1fr; /* una sola columna en mobile */
+    padding: 1.5rem;
+  }
+  .diamond { margin: 1rem auto 0; } /* centrar el icono en mobile */
+}
+/* ...existing code... */

@@ -1,0 +1,269 @@
+:root {
+  /* Contraste mejorado para accesibilidad y prominencia */
+  --background: #f7f7f7; /* Fondo más claro y suave */
+  --text: #171717; /* Texto principal oscuro */
+  --muted: #6b6b6b; /* Gris oscuro para texto secundario */
+  --brand: #f0c058; /* Dorado más saturado y visible */
+  --brand--600: #e0b048; /* Tono más oscuro para el hover */
+  --surface: #ffffff; /* Las tarjetas principales son blancas */
+  --card: #ffffff;
+  --border: #e0e0e0; /* Borde más suave */
+  --radius: 12px; /* Radio ligeramente reducido */
+  --container: 1200px; /* Contenedor más ancho */
+  --font-sans: 'Arial', sans-serif;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave para destacar */
+  --foreground: #171717;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+}
+
+/* Encabezado */
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Espaciado ajustado */
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem; /* Título más grande */
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.dashboard-header .highlight {
+  color: var(--brand);
+}
+
+.dashboard-header p {
+  font-size: 0.95rem; /* Texto de apoyo un poco más grande */
+  color: var(--muted); /* Usa la variable muted para coherencia */
+}
+
+/* Tarjetas base */
+.card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem; /* Más padding para airear */
+  box-shadow: var(--shadow);
+  height: 100%; /* Asegura que la tarjeta de acciones rápidas ocupe el espacio disponible */
+}
+
+/* Volvemos a la normalidad */
+.cardT {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); /* Restauramos los bordes redondeados */
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  
+  /* --- CORRECCIÓN: Quitamos position: fixed y tamaños de pantalla completa --- */
+  position: relative; /* Vuelve al flujo normal del documento */
+  width: 100%;        /* Ocupa el ancho disponible en su contenedor, no de la pantalla */
+  height: auto;       /* La altura se ajusta al contenido (la tabla) */
+  overflow: auto;     /* Si la tabla es muy ancha, permite scroll dentro de la tarjeta */
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Estadísticas - Grid para mejor adaptabilidad */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; /* Espacio entre tarjetas de métricas */
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stat-card .title {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.stat-card .value {
+  font-size: 2.5rem; /* Más grande y prominente */
+  font-weight: 800;
+  color: var(--foreground);
+  line-height: 1;
+}
+
+.stat-card .note {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--brand); /* El color de marca es el acento */
+  margin-top: 0.5rem;
+  line-height: 1.2;
+}
+
+/* Ajuste para el texto descriptivo de Categorías */
+.stat-card .note.muted-text {
+  color: var(--muted); 
+  font-style: italic;
+  font-size: 0.75rem;
+}
+
+/* Tabla de usuarios recientes */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.user-table th,
+.user-table td {
+  padding: 0.75rem 0; /* Padding vertical, sin horizontal extra */
+  text-align: left;
+  /* Eliminar borde inferior de TH para un look más limpio */
+  /* Reemplazar la línea para TDs si se desea */
+  border-bottom: 1px solid var(--border); 
+}
+
+.user-table th {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Quitar borde inferior de la última fila */
+.user-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* Contenedor principal para tablas y acciones */
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Mantiene la proporción */
+    gap: 1.5rem;
+}
+
+/* Acciones rápidas */
+.quick-actions p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.quick-actions a {
+  display: flex; /* Usar flex para centrar mejor el contenido si se añade icono */
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border-radius: 8px; /* Radio un poco más pequeño para botones */
+  padding: 0.75rem 1rem; /* Más altura para el botón */
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 0.6rem;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.quick-actions a:first-child {
+  background-color: var(--brand);
+  color: var(--foreground);
+}
+
+.quick-actions a:not(:first-child) {
+  background-color: var(--background); /* Usar el fondo general */
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.quick-actions a:hover {
+  background-color: var(--brand--600);
+  color: var(--foreground);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Tabla de Usuarios (Ajustes de estilo) --- */
+
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* Eliminamos el margin-top si ya está dentro de una tarjeta con padding */
+}
+
+.user-table th,
+.user-table td {
+  padding: 0.75rem 0.5rem; /* Más padding horizontal para airear las columnas */
+  text-align: left;
+  border-bottom: 1px solid var(--border); 
+}
+
+.user-table th {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.75rem; /* Más pequeño para que se vea como encabezado de tabla */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  /* Alineamos verticalmente para consistencia */
+  vertical-align: middle; 
+}
+
+.user-table td {
+    font-size: 0.9rem;
+    color: var(--text);
+    vertical-align: middle; 
+}
+
+/* Quitar borde inferior de la última fila */
+.user-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Estilo de fila al pasar el ratón para mejor usabilidad */
+.user-table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02); /* Un ligero gris sobre el fondo blanco */
+    cursor: pointer;
+}
+
+/* Estilo para el método de acceso (el badge) */
+.access-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1;
+    /* Colores por defecto para un método destacado */
+    background-color: rgba(240, 192, 88, 0.1); /* brand con baja opacidad */
+    color: var(--brand--600);
+    border: 1px solid var(--brand--600);
+}

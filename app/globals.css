@@ -1,0 +1,458 @@
+@import "tailwindcss"; /* Importa utilidades de Tailwind CSS para usar clases en el proyecto */
+
+/* =========================
+   VARIABLES GLOBALES
+   ========================= */
+:root {
+  --background: #eeeeee; /* Color de fondo principal de la página */
+  --text: #000000; /* Color del texto principal */
+  --muted: #b3ab99; /* Color para elementos atenuados o secundarios */
+  --brand: #f0d58c; /* Color de marca o acento principal */
+  --brand--600: #f0d58c; /* Variante más intensa del color de marca */
+  --surface: #fdf5e6; /* Color para superficies o elementos destacados */
+  --card: #ffffff; /* Color para tarjetas o bloques */
+  --border: #ffffff; /* Color para bordes de elementos */
+  --radius: 16px; /* Radio de borde para esquinas redondeadas */
+  --container: 1100px; /* Ancho máximo del contenedor principal */
+  --font-sans: 'Arial', sans-serif; /* Fuente principal sans-serif */
+  --shadow: 0 10px 30px rgba(245, 198, 68); /* Sombra para elementos elevados */
+  --foreground: #171717; /* Color de primer plano, usado en modo oscuro */
+}
+
+/* =========================
+   BODY Y TIPOGRAFÍA
+   ========================= */
+body {
+  background: var(--background); /* Aplica el color de fondo definido en variables */
+  color: var(--text); /* Aplica el color de texto principal */
+  font-family: var(--font-sans); /* Usa la fuente sans-serif definida */
+  line-height: 1.6; /* Mejora la legibilidad del texto */
+}
+
+/* =========================
+   HEADER Y NAVEGACIÓNjj
+   ========================= */
+.site-header {
+  position: sticky; /* El header se mantiene visible al hacer scroll */
+  top: 0;
+  z-index: 50; /* Se asegura que esté por encima de otros elementos */
+  backdrop-filter: blur(8px); /* Aplica desenfoque al fondo del header */
+  background: #ffffff; /* Fondo blanco */
+  border-bottom: .5px solid var(--border); /* Borde inferior */
+}
+
+.nav {
+  display: flex; /* Usa flexbox para distribuir los elementos */
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: space-between; /* Espacia los elementos a los extremos */
+  padding: .9rem 0; /* Espaciado vertical */
+}
+
+.nav-flex {
+  display: flex; /* Flexbox para el nav principal */
+  align-items: center; /* Centra verticalmente */
+  justify-content: space-between; /* Logo a la izq, menú a la der */
+  gap: 2rem; /* Espacio entre logo y menú */
+}
+
+.nav-logo {
+  display: flex; /* Logo y texto juntos */
+  align-items: center; /* Centra verticalmente */
+  gap: 0.5rem; /* Espacio entre logo y texto */
+}
+
+.brand {
+  font-weight: 700; /* Negrita */
+  font-size: 1.1rem; /* Tamaño de fuente */
+}
+
+.menu {
+  list-style: none; /* Quita los puntos de la lista */
+  display: flex; /* Flexbox para los ítems del menú */
+  gap: 1rem; /* Espacio entre los ítems */
+  margin-left: 0; /* Elimina margen izquierdo */
+  padding: 0; /* Elimina padding */
+  align-items: center; /* Centra verticalmente */
+}
+
+menu a {
+  color: var(--text); /* Color de texto de los enlaces */
+  opacity: 0.9; /* Opacidad para efecto visual */
+}
+
+.menu a:hover {
+  opacity: 1; /* Hace el enlace completamente visible al pasar el mouse */
+}
+
+a:hover {
+  cursor: pointer; /* Cambia el cursor a mano en todos los enlaces */
+}
+
+/* Navegación interna del header (para dashboard / landing */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-left: 2rem;
+}
+.navLink {
+  font-size: 0.95rem;
+  color: #333;
+  text-decoration: none;
+  transition: color .2s;
+}
+.navLink:hover {
+  color: #1a1a1a;
+  text-decoration: underline;
+}
+
+/* =========================
+   CONTENEDORES Y SECCIONES
+   ========================= */
+.container {
+  width: min(100% - 2rem, var(--container)); /* Ancho máximo definido por variable */
+  margin-inline: auto; /* Centra el contenedor horizontalmente */
+}
+
+.section {
+  padding: 3rem 0; /* Espaciado vertical para secciones */
+}
+
+.section.center {
+  text-align: center; /* Centra el texto */
+}
+
+.section.izquierda {
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.section.derecha {
+  text-align: right; /* Alinea el texto a la derecha */
+}
+
+/* =========================
+   TIPOGRAFÍA
+   ========================= */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 .5rem; /* Margen inferior para separar del contenido */
+  line-height: 1.2; /* Mejora la legibilidad */
+}
+h1 {
+  font-size: 2.5rem; /* Tamaño de fuente grande */
+  font-weight: 700; /* Negrita */
+}
+h2 {
+  font-size: 1.0rem; /* Tamaño de fuente */
+  font-weight: 600; /* Negrita */
+}
+
+p {
+  margin: 0 0 1rem; /* Margen inferior para separar del siguiente elemento */
+}
+
+/* =========================
+   BOTONES
+   ========================= */
+.btn {
+  display: inline-block; /* Permite aplicar padding y margen */
+  padding: .75rem 1rem; /* Espaciado interno */
+  border-radius: 9px; /* Esquinas redondeadas */
+  background: var(--brand); /* Fondo con color de marca */
+  color: rgb(0, 0, 0); /* Color de texto en el botón */
+  font-weight: 600; /* Negrita para el texto del botón */
+  border: 1px solid transparent; /* Borde transparente para mantener tamaño */
+  font-size: 0.90rem; /* Tamaño de fuente */
+  /*box-shadow: var(--shadow); /* Sombra usando variable */
+  text-align: center; /* Centra el texto */
+  width: fit-content; /* El ancho se ajusta al contenido */
+}
+
+.btn1 {
+  display: block;               /* para que margin:auto funcione */
+  margin: 0.6rem auto;          /* centra horizontalmente */
+  padding: .75rem 1rem;
+  border-radius: 9px;
+  background: var(--brand);
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  border: 1px solid transparent; /* prueba pa ver que show xd*/
+  font-size: 0.90rem;
+  text-align: center;
+  width: fit-content;          /* mantiene el ancho ajustado al contenido */
+}
+
+.btnTransparente {
+  display: inline-block; /* Permite aplicar padding y margen */
+  padding: .4rem 0.8rem; /* Espaciado interno */
+  border-radius: 9px; /* Esquinas redondeadas */
+  background: transparent; /* Fondo con color de marca */
+  color: rgb(0, 0, 0); /* Color de texto en el botón */
+  font-weight: 600; /* Negrita para el texto del botón */
+  border: 1px solid transparent; /* Borde transparente para mantener tamaño */
+  font-size: 0.90rem; /* Tamaño de fuente */
+}
+
+.btn:hover {
+  filter: brightness(1.1); /* este Efecto de brillo al pasar el mouse */
+} 
+
+.btnTransparente:hover {
+  filter: brightness(1.1);
+  color: #caab54; /* Cambia el color del texto al pasar el mouse */
+  cursor: pointer; /* Cambia el cursor a mano al pasar sobre el botón */
+}
+
+/* Botón amarillo para "Registrarse" */
+.btnYellow {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  background: var(--brand);
+  /*background: #f5e5b8; /* amarillo claro */
+  color: #1a1a1a;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #e2cfa0;
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+
+.btnYellow:hover,
+.btnYellow:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  outline: none;
+}
+
+/* Asegura que los links no cambien estilo por defecto dentro del nav */
+.menu .btnYellow { line-height: 1; }
+
+/* =========================
+   GRID Y TARJETAS
+   ========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;   /* Centra horizontalmente cada tarjeta */
+  align-items: start;      /* Alinea todo parejito */
+}
+
+.card {
+  background: var(--card); /* Fondo con color de tarjeta */
+  border: 1px solid var(--border); /* Borde con color de variable */
+  padding: 1.2rem; /* Espaciado interno */
+  box-shadow: var(--shadow); /* Sombra para efecto de elevación */
+  text-align: center; /* Centra el texto dentro de la tarjeta */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;/*Empuja el contenido hacia arriba y abajo*/
+  height: 100%; /* Asegura que la tarjeta ocupe todo el alto disponible */
+  border-radius: 16px;     /* Bordes bonitos */
+  max-width: 350px;
+  width: 100%;
+}
+
+.card h3{
+  margin-bottom: 0.8rem; /* Espacio debajo del título */
+}
+
+.card-text {
+  text-align: center;
+  line-height: 1.4;
+}
+
+.card .btn{
+  margin-top: 1.2rem; /* Espacio arriba del botón */
+}
+
+.card p:last-of-type {
+  margin-top: auto; /* Empuja el botón hacia abajo */
+}
+
+h3 {
+  font-size: 2.0rem; /* Tamaño de fuente para h3 */
+}
+
+.col-12 {
+  grid-column: span 12; /* Ocupa las 12 columnas de la cuadrícula */
+}
+.col-6 {
+  grid-column: span 6; /* Ocupa 6 de las 12 columnas */
+}
+.col-4 {
+  grid-column: span 4; /* Ocupa 4 de las 12 columnas */
+}
+.col-3 {
+  grid-column: span 3; /* Ocupa 3 de las 12 columnas */
+}
+
+/* =========================
+   RESPONSIVE GRID
+   ========================= */
+@media (max-width: 900px) {
+  .col-md-12 {
+    grid-column: span 12 !important; /* Ocupa todo el ancho en pantallas medianas */
+  }
+  .col-md-6 {
+    grid-column: span 6 !important; /* Ocupa la mitad en pantallas medianas */
+  }
+}
+@media (max-width: 640px) {
+  .col-sm-12 {
+    grid-column: span 12 !important; /* Ocupa todo el ancho en pantallas pequeñas */
+  }
+  .col-sm-6 {
+    grid-column: span 6 !important; /* Ocupa la mitad en pantallas pequeñas */
+  }
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.site-footer {
+  background: rgba(247, 238, 122, 0.3);/* Fondo del footer */
+  color: var(--text); /* Color de texto */
+  padding: 2rem 0; /* Espaciado vertical */
+  border-top: 1px solid var(--border); /* Borde superior */
+  text-align: center; /* Centra el texto por defecto */
+  font-size: 1rem; /* Tamaño de fuente */
+}
+.site-footer a {
+  color: var(--text); /* Color de enlaces */
+  text-decoration: underline; /* Subrayado */
+}
+.site-footer a:hover {
+  color: var(--brand--600); /* Color al pasar el mouse */
+}
+
+/* =========================
+   FAQ
+   ========================= */
+.faq-list {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  /*box-shadow: var(--shadow);*/
+}
+
+/* Cada pregunta */
+.faq-list summary {
+  cursor: pointer;                  /* Manita al pasar el mouse */
+  font-weight: 600;                  /* Negrita */
+  font-size: 1.1rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+  list-style: none;
+  color: var(--foreground);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.faq-list summary:hover {
+  color: #000000;                        /* Letras siempre negras */
+  background: rgba(247, 238, 122, 0.3);  /* Amarillo traslúcido */
+  border-radius: 8px;
+}
+
+/* Respuestas */
+.faq-list details[open] summary {
+  border-bottom: none;               /* Quita línea cuando el detalle está abierto */
+}
+
+.faq-list p {
+  padding: 0.5rem 1rem;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.5;
+  background: var(--background);
+  border-radius: 0 0 8px 8px;       /* Solo esquinas inferiores redondeadas */
+}
+
+/* Íconos de expandir/cerrar */
+.faq-list summary::marker,
+.faq-list summary::-webkit-details-marker {
+  display: none;                     /* Oculta el triángulo por defecto */
+}
+
+/* Ícono personalizado usando pseudo-elemento */
+.faq-list summary::after {
+  content: '+';
+  float: right;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.faq-list details[open] summary::after {
+  content: '−';                      /* Cambia + por − al abrir */
+  transform: rotate(0deg);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .faq-list {
+    padding: 1.5rem 1rem;
+    gap: 0.8rem;
+  }
+  .faq-list summary {
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+  }
+  .faq-list p {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+/* =========================
+   HERO (SECCIÓN PRINCIPAL)
+   ========================= */
+.hero-flex {
+  display: flex; /* Flexbox para alinear imagen y texto */
+  justify-content: center;
+  align-items: center; /* Centra verticalmente */
+  gap: 1rem; /* Espacio entre imagen y texto */
+  flex-wrap: wrap; /* Permite que se apilen en pantallas pequeñas */
+}
+.hero-img {
+  flex: 1 0 auto; /* Imagen no crece ni se reduce */
+}
+.hero-text {
+  flex: 5 1 0; /* Texto ocupa el espacio restante */
+  min-width: 250px; /* Ancho mínimo para el texto */
+}
+
+/* =========================
+   FOOTER FLEX (LOGO, MARCA, REDES)
+   ========================= */
+.footer-flex {
+  display: flex; /* Flexbox para el footer */
+  align-items: center; /* Centra verticalmente */
+  justify-content: space-between; /* Espacia logo, marca y redes */
+  gap: 2rem; /* Espacio entre columnas */
+}
+
+.footer-logo,
+.footer-brand,
+.footer-redes {
+  flex: 1 1 0; /* Cada columna puede crecer o reducirse */
+  display: flex; /* Flexbox para centrar contenido */
+  justify-content: center; /* Centra horizontalmente por defecto */
+  align-items: center; /* Centra verticalmente */
+}
+
+.footer-logo {
+  justify-content: flex-start; /* Logo a la izquierda */
+}
+
+.footer-brand {
+  justify-content: center; /* Marca al centro */
+}
+
+.footer-redes {
+  justify-content: flex-end; /* Redes a la derecha */
+}

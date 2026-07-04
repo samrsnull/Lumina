@@ -1,0 +1,160 @@
+/* =========================
+   ESTILOS ADAPTADOS AL TEMA
+   ========================= */
+
+/* Contenedor principal */
+.container {
+    /* Usamos el ancho y centrado estándar del tema */
+    width: min(100% - 2rem, var(--container));
+    margin-inline: auto;
+    padding: 3rem 0; /* Ajuste de espaciado vertical */
+    background-color: var(--background); /* #eeeeee */
+    color: var(--text);
+}
+
+.title {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 2.8rem;
+    font-weight: 700; /* Coincide con h1 del tema */
+    margin-bottom: 40px;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+/* 1. Modificamos el bloque principal para quitarle lo amarillo */
+.block, 
+.blockReverse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 2.5rem;
+  margin-bottom: 50px;
+  
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border, #ffffff);
+  border-radius: var(--radius, 16px);
+  
+  /* CAMBIO AQUÍ: Usamos una sombra gris sutil en vez de var(--shadow) */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); 
+}
+
+/* 2. Aseguramos que la imagen SÍ tenga el brillo amarillo */
+.img {
+  border-radius: var(--radius, 16px);
+  object-fit: cover;
+  
+  /* MANTENEMOS ESTO: El brillo amarillo intenso */
+  box-shadow: var(--shadow, 0 10px 30px rgba(245, 198, 68, 0.4));
+  
+  /* Opcional: Fondo blanco por si tu imagen es PNG transparente */
+  background-color: #fff; 
+  height: auto;
+}
+
+/* 3. (Opcional) Si quieres quitar el amarillo también de "Valores" y "Compromiso" */
+.values, 
+.finalBlock {
+  background: var(--card, #ffffff);
+  padding: 3rem;
+  margin-bottom: 50px; /* o 30px para finalBlock */
+  border: 1px solid var(--border, #ffffff);
+  border-radius: var(--radius, 16px);
+  
+  /* Sombra gris sutil igual que el bloque */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Tipografía interna */
+.text h2 {
+    font-size: 2rem; /* Coincide con h3 del tema */
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+/* Imágenes */
+.img {
+    border-radius: var(--radius); /* 16px */
+    object-fit: cover;
+    /* Usamos la misma sombra para consistencia o una más sutil si prefieres */
+    box-shadow: var(--shadow); 
+}
+
+/* Sección de Valores (Estilo Tarjeta) */
+.values {
+    background: var(--card);
+    padding: 40px;
+    margin-bottom: 50px;
+    
+    /* Estilos del tema */
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.values ul {
+    margin-top: 15px;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    color: var(--text);
+    padding-left: 20px; /* Para que se vean los bullets */
+}
+
+/* Bloque Final */
+.finalBlock {
+    background:rgba(247, 238, 122, 0.3);
+    padding: 40px;
+    text-align: center;
+    
+    /* Estilos del tema */
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Botón de regreso (Estilo .btn del tema) */
+.backBtn {
+    display: inline-block;
+    padding: .75rem 1.5rem; /* Ajustado para parecerse al .btn */
+    border-radius: 9px;
+    
+    background-color: var(--brand); /* #f0d58c */
+    color: rgb(0, 0, 0);
+    border: 1px solid transparent;
+    
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: filter 0.2s ease, transform 0.1s ease;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.backBtn:hover {
+    filter: brightness(1.1); /* Efecto de brillo del tema */
+    cursor: pointer;
+    transform: translateY(-1px); /* Pequeño salto como .btnYellow */
+}
+
+/* Responsive para los bloques (Opcional pero recomendado) */
+@media (max-width: 768px) {
+    .block, .blockReverse {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .img {
+        width: 100%;
+        max-width: 400px;
+    }
+}
